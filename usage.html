@@ -1,0 +1,723 @@
+ 
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage &#8212; Dask Gateway 2023.9.0 documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <link rel="shortcut icon" href="_static/images/favicon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration-user.html" />
+    <link rel="prev" title="Installation" href="install-user.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-P4GQM59"
+    height="0"
+    width="0"
+    style="display: none; visibility: hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
+
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
+
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
+
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
+  </ul>
+</nav>
+
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Gateway 2023.9.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  For Users
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="install-user.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="configuration-user.html">
+   Configuration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin - Installation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="install-local.html">
+   Install Locally (Quickstart)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install-hadoop.html">
+   Install on a Hadoop Cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install-kube.html">
+   Install on a Kubernetes Cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install-jobqueue.html">
+   Install on an HPC Job Queue
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin - Customization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="authentication.html">
+   Authentication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="security.html">
+   Security settings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cluster-options.html">
+   Exposing Cluster Options
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="resource-limits.html">
+   Cluster Resource Limits
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="api-client.html">
+   Client API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api-server.html">
+   Configuration Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="develop.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="changelog.html">
+   Changelog
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/usage.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-a-dask-gateway-server">
+   Connect to a dask-gateway server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-new-cluster">
+   Create a new cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-a-cluster">
+   Configure a cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scale-up-a-cluster">
+   Scale up a cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enable-adaptive-scaling">
+   Enable adaptive scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-the-cluster">
+   Connect to the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-computations-on-the-cluster">
+   Run computations on the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutdown-the-cluster">
+   Shutdown the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-an-existing-cluster">
+   Connect to an existing cluster
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Usage</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-a-dask-gateway-server">
+   Connect to a dask-gateway server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-new-cluster">
+   Create a new cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-a-cluster">
+   Configure a cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scale-up-a-cluster">
+   Scale up a cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enable-adaptive-scaling">
+   Enable adaptive scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-the-cluster">
+   Connect to the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-computations-on-the-cluster">
+   Run computations on the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutdown-the-cluster">
+   Shutdown the cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-an-existing-cluster">
+   Connect to an existing cluster
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>Here we walk through a typical user workflow. This assumes you’ve already
+installed the <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code> client library (see <a class="reference internal" href="install-user.html"><span class="doc">Installation</span></a>) and
+have a <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> running somewhere. For a completely local setup
+of both client and server (for demos, testing, etc…) see <a class="reference internal" href="install-local.html"><span class="doc">Install Locally (Quickstart)</span></a>
+instead.</p>
+<div class="section" id="connect-to-a-dask-gateway-server">
+<h2>Connect to a dask-gateway server<a class="headerlink" href="#connect-to-a-dask-gateway-server" title="Permalink to this headline">¶</a></h2>
+<p>Users interact with a <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> via the <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code> client
+library. Typically a session starts by creating a <a class="reference internal" href="api-client.html#dask_gateway.Gateway" title="dask_gateway.Gateway"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gateway</span></code></a> client. This
+takes a few parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code>: The full address of the dask-gateway server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proxy_address</span></code>: The full address of the dask-gateway scheduler proxy. If
+not provided, this defaults to <code class="docutils literal notranslate"><span class="pre">address</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auth</span></code>: The authentication method to use</p></li>
+</ul>
+<p>The values for each of these are specific to your deployment - consult your
+administrator for more information about your specific deployment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_gateway</span> <span class="kn">import</span> <span class="n">Gateway</span>
+
+<span class="c1"># -- Here we provide a few examples of creating a `Gateway` object --</span>
+
+<span class="c1"># Gateway server running at http://mygateway.com with kerberos authentication</span>
+<span class="n">gateway</span> <span class="o">=</span> <span class="n">Gateway</span><span class="p">(</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;http://mygateway.com&quot;</span><span class="p">,</span>
+    <span class="n">auth</span><span class="o">=</span><span class="s2">&quot;kerberos&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Gateway server at http://146.148.58.187, proxy at</span>
+<span class="c1"># tls://35.202.68.87:8786, with JupyterHub authentication</span>
+<span class="n">gateway</span> <span class="o">=</span> <span class="n">Gateway</span><span class="p">(</span>
+     <span class="s2">&quot;http://146.148.58.187&quot;</span><span class="p">,</span>
+     <span class="n">proxy_address</span><span class="o">=</span><span class="s2">&quot;tls://35.202.68.87:8786&quot;</span><span class="p">,</span>
+     <span class="n">auth</span><span class="o">=</span><span class="s2">&quot;jupyterhub&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Typically these parameters are configured once in <a class="reference internal" href="configuration-user.html"><span class="doc">Configuration</span></a>, at
+which point a <a class="reference internal" href="api-client.html#dask_gateway.Gateway" title="dask_gateway.Gateway"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gateway</span></code></a> object can be created with no parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_gateway</span> <span class="kn">import</span> <span class="n">Gateway</span>
+
+<span class="c1"># Use values stored in your local configuration (recommended)</span>
+<span class="n">gateway</span> <span class="o">=</span> <span class="n">Gateway</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To check that everything is setup properly, query the gateway to see any
+existing clusters. If this call completes, you should have a properly
+configured gateway client.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gateway</span><span class="o">.</span><span class="n">list_clusters</span><span class="p">()</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-new-cluster">
+<span id="usage-create-new-cluster"></span><h2>Create a new cluster<a class="headerlink" href="#create-a-new-cluster" title="Permalink to this headline">¶</a></h2>
+<p>To create a new cluster, you can use the <a class="reference internal" href="api-client.html#dask_gateway.Gateway.new_cluster" title="dask_gateway.Gateway.new_cluster"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.new_cluster()</span></code></a> method.
+This will create a new cluster with no workers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">new_cluster</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span>
+<span class="go">GatewayCluster&lt;6c14f41343ea462599f126818a14ebd2&gt;</span>
+</pre></div>
+</div>
+<p>Alternatively, you can skip creating a <a class="reference internal" href="api-client.html#dask_gateway.Gateway" title="dask_gateway.Gateway"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gateway</span></code></a> object, and use the
+<a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster" title="dask_gateway.GatewayCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">GatewayCluster</span></code></a> constructor directly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dask_gateway</span> <span class="kn">import</span> <span class="n">GatewayCluster</span>
+<span class="go"># Create a new cluster using the GatewayCluster constructor directly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span> <span class="o">=</span> <span class="n">GatewayCluster</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The choice between methods is largely preferential. If you need to interact
+with the gateway server only to create a new cluster then using
+<a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster" title="dask_gateway.GatewayCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">GatewayCluster</span></code></a> may be simpler. If you need to perform other operations
+(e.g. querying running clusters) then you may wish to use a <a class="reference internal" href="api-client.html#dask_gateway.Gateway" title="dask_gateway.Gateway"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gateway</span></code></a>
+instead.</p>
+</div>
+<div class="section" id="configure-a-cluster">
+<span id="user-cluster-options"></span><h2>Configure a cluster<a class="headerlink" href="#configure-a-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Some <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> deployments allow users to configure their
+clusters upon launching. Typical options may include specifying worker
+memory/cores or which docker image to use. To see which options (if any) your
+server supports you can use the <a class="reference internal" href="api-client.html#dask_gateway.Gateway.cluster_options" title="dask_gateway.Gateway.cluster_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.cluster_options()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">options</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">cluster_options</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">options</span>
+<span class="go">Options&lt;worker_cores=1, worker_memory=1.0, environment=&#39;basic&#39;&gt;</span>
+</pre></div>
+</div>
+<p>This returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code> object, which describes the options available.
+The options object is a <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping">MutableMapping</a>, that also supports attribute access of
+fields.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Both attribute and key access works</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">options</span><span class="o">.</span><span class="n">worker_cores</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;worker_cores&quot;</span><span class="p">]</span>
+<span class="mi">1</span>
+
+<span class="c1"># Can change values using attribute or key access</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">options</span><span class="o">.</span><span class="n">worker_cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">options</span><span class="o">.</span><span class="n">worker_cores</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>Note that validation of the fields is done both client and server-side. For
+example, if a limit has been set on a numeric field (e.g. max
+<code class="docutils literal notranslate"><span class="pre">worker_cores</span></code>), then a nice error will be raised if that limit is exceeded.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">options</span><span class="o">.</span><span class="n">worker_cores</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="go">    Traceback (most recent call last):</span>
+<span class="go">            ...</span>
+<span class="go">    ValueError: worker_cores must be &lt;= 4, got 10</span>
+</pre></div>
+</div>
+<p>If you’re working interactively in a <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter Notebook</a> or <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> and
+have <a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/">ipywidgets</a> installed, you can also use the provided widget for
+configuring your cluster.</p>
+<img alt="Cluster options widget" src="_images/options-widget.png" />
+<p>Once <code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code> object has the desired values set, you can pass this to
+<a class="reference internal" href="api-client.html#dask_gateway.Gateway.new_cluster" title="dask_gateway.Gateway.new_cluster"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.new_cluster()</span></code></a> or <a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster" title="dask_gateway.GatewayCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">GatewayCluster</span></code></a> to use these values when
+creating a new cluster.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Gateway.new_cluster</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">new_cluster</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+<span class="c1"># Or using the GatewayCluster constructor</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">GatewayCluster</span><span class="p">(</span><span class="n">cluster_options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, if you know the configurable options available on your
+<code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> deployment, you can pass in your values directly as
+keyword arguments to either method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Gateway.new_cluster</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">new_cluster</span><span class="p">(</span><span class="n">worker_cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or using the GatewayCluster constructor</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">GatewayCluster</span><span class="p">(</span><span class="n">worker_cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scale-up-a-cluster">
+<h2>Scale up a cluster<a class="headerlink" href="#scale-up-a-cluster" title="Permalink to this headline">¶</a></h2>
+<p>To scale a cluster to one or more workers, you can use the
+<a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster.scale" title="dask_gateway.GatewayCluster.scale"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GatewayCluster.scale()</span></code></a> method. Here we scale our cluster up to two
+workers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you’re working interactively in a <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter Notebook</a> or <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> and
+have <a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/">ipywidgets</a> installed, you can also use the provided widget to change the
+cluster size, instead of calling <a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster.scale" title="dask_gateway.GatewayCluster.scale"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GatewayCluster.scale()</span></code></a> programmatically.</p>
+<img alt="Manual scaling widget" src="_images/scale-widget.png" />
+</div>
+<div class="section" id="enable-adaptive-scaling">
+<h2>Enable adaptive scaling<a class="headerlink" href="#enable-adaptive-scaling" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, you can use <a class="reference external" href="https://docs.dask.org/en/latest/setup/adaptive.html">adaptive scaling</a> to allow your cluster to scale
+up/down based on load. This can be useful in reducing resource usage only to
+what’s currently required for your workload. To enable adaptive scaling you can
+use the <a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster.adapt" title="dask_gateway.GatewayCluster.adapt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GatewayCluster.adapt()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adaptively scale between 2 and 10 workers</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">minimum</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with manual scaling above, if you’re working in a notebook environment you
+can also use the provided widget to enable adaptive scaling , instead of
+calling <a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster.adapt" title="dask_gateway.GatewayCluster.adapt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GatewayCluster.adapt()</span></code></a> programmatically.</p>
+<img alt="Manual scaling widget" src="_images/adapt-widget.png" />
+<p>If you wish to disable adaptive scaling later you can pass in <code class="docutils literal notranslate"><span class="pre">active=False</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable adaptive scaling</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cluster</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="connect-to-the-cluster">
+<h2>Connect to the cluster<a class="headerlink" href="#connect-to-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>To connect to the cluster so you can start doing work, you can use the
+<a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster.get_client" title="dask_gateway.GatewayCluster.get_client"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GatewayCluster.get_client()</span></code></a> method. This returns a
+<code class="docutils literal notranslate"><span class="pre">dask.distributed.Client</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">get_client</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span>
+<span class="go">&lt;Client: scheduler=&#39;tls://198.51.100.1:65252&#39; processes=2 cores=2&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-computations-on-the-cluster">
+<h2>Run computations on the cluster<a class="headerlink" href="#run-computations-on-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>At this point you should be able to use normal <code class="docutils literal notranslate"><span class="pre">dask</span></code> methods to do work. For
+example, here we take the mean of a random array.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="go">0.0022336223893512945</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="shutdown-the-cluster">
+<h2>Shutdown the cluster<a class="headerlink" href="#shutdown-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>When you’re done using it, you can shutdown the cluster using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Cluster.shutdown()</span></code> method. This will cleanly close all dask workers, as
+well as the scheduler.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that when a <a class="reference internal" href="api-client.html#dask_gateway.GatewayCluster" title="dask_gateway.GatewayCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">GatewayCluster</span></code></a> object is used as a context manager,
+<code class="docutils literal notranslate"><span class="pre">shutdown</span></code> will be called automatically on context exit:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">gateway</span><span class="o">.</span><span class="n">new_cluster</span><span class="p">()</span> <span class="k">as</span> <span class="n">cluster</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">get_client</span><span class="p">()</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Alternatively, lingering cluster objects will be automatically shutdown when
+your client process closes. It’s good practice to explicitly clean things up,
+but it’s not strictly necessary. If you want clusters to persist longer than
+the lifetime of your client process, set <code class="docutils literal notranslate"><span class="pre">shutdown_on_close=False</span></code> when
+calling <a class="reference internal" href="api-client.html#dask_gateway.Gateway.new_cluster" title="dask_gateway.Gateway.new_cluster"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.new_cluster()</span></code></a>.</p>
+</div>
+<div class="section" id="connect-to-an-existing-cluster">
+<h2>Connect to an existing cluster<a class="headerlink" href="#connect-to-an-existing-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, you can leave a cluster running and reconnect to it later.  To
+do this, set <code class="docutils literal notranslate"><span class="pre">shutdown_on_close=False</span></code> when calling
+<a class="reference internal" href="api-client.html#dask_gateway.Gateway.new_cluster" title="dask_gateway.Gateway.new_cluster"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.new_cluster()</span></code></a> - this allows Dask clusters to persist longer than
+the lifetime of your client process.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new cluster which will persist longer than the lifetime of the</span>
+<span class="c1"># client process</span>
+<span class="n">cluster</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">new_cluster</span><span class="p">(</span><span class="n">shutdown_on_close</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To connect to a running cluster, you need the cluster’s name (a unique
+identifier). If you don’t already know it, you can see all running clusters
+using the <a class="reference internal" href="api-client.html#dask_gateway.Gateway.list_clusters" title="dask_gateway.Gateway.list_clusters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.list_clusters()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">clusters</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">list_clusters</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clusters</span>
+<span class="go">[ClusterReport&lt;name=ce498e95403741118a8f418ee242e646, status=RUNNING&gt;]</span>
+</pre></div>
+</div>
+<p>You can then connect to an existing cluster using the <a class="reference internal" href="api-client.html#dask_gateway.Gateway.connect" title="dask_gateway.Gateway.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Gateway.connect()</span></code></a>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster</span>
+<span class="go">GatewayCluster&lt;ce498e95403741118a8f418ee242e646&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="install-user.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="configuration-user.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Configuration</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jim Crist-Harif<br/>
+    
+        &copy; Copyright 2021, Jim Crist-Harif.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      "gtm.start": new Date().getTime(),
+      event: "gtm.js",
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(
+    window,
+    document,
+    "script",
+    "dataLayer",
+    "GTM-P4GQM59"
+  );
+</script>
+<!-- End Google Tag Manager -->
+
+  </body>
+</html>
